@@ -8,13 +8,20 @@
     <title>Search for a Book</title>
 </head>
 <body>
-    <form action="">
-        <input type="text" placeholder="Search for a book"><br>
-        <input type="radio" name="search_by" id="title">
-        <label for="title">Title</label><br>
-        <input type="radio" name="search_by" id="autehr">
-        <label for="title">Auther</label><br>
-        <input type="submit" value="Search">
+    <form class="search_form" id="search_form" method="post" action="/searches">
+        <div class="inputContainer">
+            <input type="text" name="keyword" placeholder="Enter a tilte or auther">
+        </div>
+        <div class="inputContainer">
+            <input type="radio" name="search_by" value="intitle" id="intitle">
+            <label for="title">Title</label>
+        </div>
+        
+        <div class="inputContainer">
+            <input type="radio" name="search_by" value="inauthor" id="inauthor">
+            <label for="title">Auther</label>
+        </div>
+        <input type="submit" value="Search the Google Books API">
     </form>
     
     <script src="js/app.js"></script>
