@@ -4,26 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <title>Search for a Book</title>
 </head>
 <body>
-    <form class="search_form" id="search_form" method="post" action="/searches">
-        <div class="inputContainer">
-            <input type="text" name="keyword" placeholder="Enter a tilte or auther">
+    <header>
+        <div class="headerTop">
+            <div class="logo">Best Books!</div>
+            <div class="hamburgerMenu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
         </div>
-        <div class="inputContainer">
-            <input type="radio" name="search_by" value="intitle" id="intitle">
-            <label for="title">Title</label>
+        <nav class="none">
+            <ul>
+                <li><a href="/">Home Page</a></li>
+                <li><a href="/searches/new">Search</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="form_container">
+            <p class="form_title">Search by Tilte or Auther</p>
+            <form class="search_form" id="search_form" method="post" action="/searches">
+                <div class="input_container">
+                    <input type="text" name="keyword" placeholder="Enter a tilte or auther">
+                </div>
+                <div class="input_container">
+                    <input type="radio" name="search_by" value="intitle" id="intitle">
+                    <label for="title">Title</label>
+                </div>
+                
+                <div class="input_container">
+                    <input type="radio" name="search_by" value="inauthor" id="inauthor">
+                    <label for="title">Auther</label>
+                </div>
+                <div class="input_container">
+                    <input type="submit" value="Search the Google Books API">
+                </div>
+            </form>
         </div>
-        
-        <div class="inputContainer">
-            <input type="radio" name="search_by" value="inauthor" id="inauthor">
-            <label for="title">Auther</label>
-        </div>
-        <input type="submit" value="Search the Google Books API">
-    </form>
+    </main>
     
-    <script src="js/app.js"></script>
+    <footer></footer>
+    <script src="/js/app.js"></script>
 </body>
 </html>
