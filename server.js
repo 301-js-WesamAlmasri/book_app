@@ -19,21 +19,25 @@ app.get('/hello', handleTest);
 app.get('/searches/new', handleSearchNew);
 app.post('/searches', handlePostSearch);
 
+// Error handler midlware
+app.use(errorPage);
+
+
 
 /* --------- Application routes handlers ---------- */
 
 // Test routes
-function handleTest(req, res) {
+function handleTest(req, res, next) {
     res.render('pages/index', {'name': 'Wesam Al-Masri'})
 }
 
 //routes to render the search form
-function handleSearchNew(req, res) {
-    res.render('pages/searches/new')
+function handleSearchNew(req, res, next) {
+    res.render('pages/searches/new');
 }
 
 //routes to render the search form
-function handlePostSearch(req, res) {
+function handlePostSearch(req, res, next) {
     let keyword = req.body.keyword
     let search_by = req.body.search_by;
     let url = `https://www.googleapis.com/books/v1/volumes?q=+${search_by}:${keyword}`;
@@ -46,6 +50,12 @@ function handlePostSearch(req, res) {
         .catch(e => {throw Error('Cannot get data from the API')})
 }
 
+/* Error handlers */
+
+// function to render the error page
+function errorPage(err, req, res, next) {
+    res.render('pages/error');
+}
 
 /* --------- Application start the server --------- */
 
