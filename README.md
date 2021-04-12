@@ -77,3 +77,15 @@ Finish time: 07:00
 Actual time needed to complete: 2 hours
 
 ---
+
+Number and name of feature: #4 View the errors
+
+Estimate of time needed to complete: 5 min
+
+Start time: 07:00
+
+Finish time: 07:05
+
+Actual time needed to complete: 5 min
+
+---
