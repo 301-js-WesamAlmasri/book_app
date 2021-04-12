@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended: false}));
 /* ---------- Application Routes ---------- */
 app.get('/hello', handleTest);
 
+app.get('/', handleHomePage);
 app.get('/searches/new', handleSearchNew);
 app.post('/searches', handlePostSearch);
 
@@ -30,9 +31,14 @@ app.use(errorPage);
 
 /* --------- Application routes handlers ---------- */
 
+// Home page routes
+function handleHomePage(req, res, next) {
+    res.render('pages/index', {'name': 'Wesam Al-Masri'})
+}
+
 // Test routes
 function handleTest(req, res, next) {
-    res.render('pages/index', {'name': 'Wesam Al-Masri'})
+    res.render('pages/index')
 }
 
 //routes to render the search form
