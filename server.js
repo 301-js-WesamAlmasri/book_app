@@ -8,6 +8,7 @@ const {Book} = require('./store')
 /* ---------- Application Setups ---------- */
 const PORT = process.env.PORT || 3000;
 const app = express();
+app.use(cors());
 app.set('view engine','ejs');
 app.use(express.static('./public'));
 app.use(express.urlencoded({extended: false}));
@@ -18,6 +19,9 @@ app.get('/hello', handleTest);
 
 app.get('/searches/new', handleSearchNew);
 app.post('/searches', handlePostSearch);
+
+// Page Not Found
+app.get('*', handlePageNotFound);
 
 // Error handler midlware
 app.use(errorPage);
@@ -47,13 +51,18 @@ function handlePostSearch(req, res, next) {
             let formattedResutl = result.map(bookData => new Book(bookData));
             res.render('pages/searches/show', {books: formattedResutl});
         })
-        .catch(e => {throw Error('Cannot get data from the API')})
+        .catch(e => next(e));
+}
+
+function handlePageNotFound(req, res, next) {
+    res.render('pages/error', {'context': 'Page Not Found'})
 }
 
 /* Error handlers */
 
 // function to render the error page
 function errorPage(err, req, res, next) {
+    console.error(err.stack);
     res.render('pages/error');
 }
 

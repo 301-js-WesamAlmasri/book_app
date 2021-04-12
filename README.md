@@ -89,3 +89,15 @@ Finish time: 07:05
 Actual time needed to complete: 5 min
 
 ---
+
+Number and name of feature: #5 UI implementation
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 07:45
+
+Finish time: 09:00
+
+Actual time needed to complete: 1:15 min
+
+---
