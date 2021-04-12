@@ -54,7 +54,7 @@ Actual time needed to complete: 25 min
 
 ---
 
-Number and name of feature: #2 Request Books API
+Number and name of feature: #2 Form to request Books from the API
 
 Estimate of time needed to complete: 15 min
 
@@ -63,5 +63,17 @@ Start time: 04:55
 Finish time: 05:00
 
 Actual time needed to complete: 5 min
+
+---
+
+Number and name of feature: #3 Get result from the API
+
+Estimate of time needed to complete: 20 min
+
+Start time: 05:05
+
+Finish time: 07:00
+
+Actual time needed to complete: 2 hours
 
 ---
