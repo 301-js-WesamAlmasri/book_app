@@ -101,3 +101,15 @@ Finish time: 09:00
 Actual time needed to complete: 1:15 min
 
 ---
+
+Number and name of feature: #6 Home page
+
+Estimate of time needed to complete: 10 min
+
+Start time: 11:05
+
+Finish time: 11:09
+
+Actual time needed to complete: 4 min
+
+---
