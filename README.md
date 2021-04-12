@@ -29,7 +29,7 @@ A Full-stack application for a book list which includes the ability to search th
 
 ## Deployed app link
 
-[Book-dic](https://book-dic.herokuapp.com/)
+[Book-dic](https://book-dict.herokuapp.com)
 
 ## Change Log
 
@@ -51,5 +51,17 @@ Start time: 04:15
 Finish time: 04:40
 
 Actual time needed to complete: 25 min
+
+---
+
+Number and name of feature: #2 Request Books API
+
+Estimate of time needed to complete: 15 min
+
+Start time: 04:55
+
+Finish time: 05:00
+
+Actual time needed to complete: 5 min
 
 ---
