@@ -46,6 +46,18 @@ nav ul li {
     background-color: rgb(116, 112, 112);
 }
 
+.hamburgerMenu .line {
+    width: 50px;
+    height: 7px;
+    margin-top: 3px;
+    background-color: white;
+    cursor: pointer;
+}
+
+nav.none {
+    display: none;
+}
+
 main {
     width: 100%;
     display: flex;
