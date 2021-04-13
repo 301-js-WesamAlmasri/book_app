@@ -115,8 +115,20 @@ Estimate of time needed to complete: 20 min
 
 Start time: 11:05
 
-Finish time: 
+Finish time: 12: 00
 
-Actual time needed to complete: 
+Actual time needed to complete: 55 min
+
+---
+
+Number and name of feature: #8 Viewing book detail
+
+Estimate of time needed to complete: 30 min
+
+Start time: 12:35
+
+Finish time: 01:05
+
+Actual time needed to complete: 30 min
 
 ---
