@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgb(185, 181, 181);
+  background-color: #e8e3e4;
   color: black;
   -webkit-box-shadow: 7px 5px 5px -1px rgba(0, 0, 0, 0.7);
   box-shadow: 7px 5px 5px -1px rgba(0, 0, 0, 0.7);
@@ -15,12 +15,15 @@
 
 .bookCard img {
   width: 60%;
+  max-width: 400px;
+  height: 200px;
+  object-fit: contain;
 }
 
 .bookCard .book_title {
   width: 80%;
+  height: 150px;
   font-size: 1.3rem;
-  color: white;
   margin-top: 30px;
 }
 
@@ -55,8 +58,9 @@
   width: 80%;
   padding: 15px 20px;
   font-size: 1.2rem;
+  font-weight: 700;
   color: white;
-  background-color: black;
+  background-color: #00B5E5;
   margin-top: 40px;
   border: none;
   cursor: pointer;
@@ -84,11 +88,34 @@
 }
 
 .book_actions_container button {
-  background-color: rgb(102, 99, 99);
+  background-color: #00B5E5;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
+}
+
+.book_actions_container button.book_delete_btn {
+  background-color: #027b9c;
+}
+
+@media screen and (min-width: 650px) {
+  .bookCard {
+    max-width: 300px;
+    margin: 10px 10px;
+  }
+
+  .bookCard.detail {
+    max-width: 600px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .bookCard.detail img {
+    max-width: none;
+    height: auto;
+  }
 }

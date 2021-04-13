@@ -3,7 +3,29 @@
 
 
 .total_saved_books {
+    width: 100%;
     margin-top: 50px;
-    color: white;
+    color: #00B5E5;
     font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
 }
+
+.logo {
+    font-weight: 900;
+}
+
+.page_title {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #027b9c;
+    color: white;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 650px) {
+    .total_saved_books {
+        margin-bottom: 30px;
+    }
+  }

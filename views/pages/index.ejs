@@ -1,5 +1,6 @@
 <%- include('../layout/header')  %> 
-    <h1 class="total_saved_books">Total saved books: <%= totalCount %> </h1>
+    <h1 class="page_title">Saved Books</h1>
+    <h2 class="total_saved_books">Total saved books: <%= totalCount %> </h2>
     <% books.forEach(book => { %>
       <%- include('../components/bookCard', {book: book, type: 'savedBookResult'}) %> 
     <% }) %>

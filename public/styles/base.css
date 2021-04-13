@@ -1,9 +1,14 @@
+/* color pallete
+#00B5E5
+#027b9c
+*/
+
 body {
-    background-color: grey;
+    background-color: white;
 }
 
 header {
-    background-color: black;
+    background-color: #00B5E5;
     color: white;
 }
 
@@ -13,5 +18,5 @@ a {
 }
 
 a:hover {
-    color: blue;
+    color: #D93491;
 }

@@ -94,7 +94,7 @@ function handleBookDetail(req, res, next) {
         .then(book => {
             res.render('pages/books/detail', {book: book});
         })
-        .then(e => next(e));
+        .catch(e => next(e));
 }
 
 function handlePageNotFound(req, res, next) {
