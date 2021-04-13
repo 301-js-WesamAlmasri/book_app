@@ -1,0 +1,33 @@
+<div class="bookCard">
+  <img src="<%= book.image_url %> " alt="" />
+  <h2 class="book_title"><%= book.title %></h2>
+  <p class="book_auther"><%= book.auther %></p>
+
+  <% if(type == 'searchResult'){ %> 
+    <p class="book_description"><%= book.description.slice(0, 100) %> ...</p>
+    <form class="add_new_book_form" action="/books" method="post">
+        <input type="hidden" name="book_shelf" value="<%= book.book_shelf %> " />
+        <input type="hidden" name="title" value="<%= book.title %> " />
+        <input type="hidden" name="auther" value="<%= book.auther %> " />
+        <input type="hidden" name="description" value="<%= book.description %> " />
+        <input type="hidden" name="image_url" value="<%= book.image_url %> " />
+        <input type="hidden" name="isbn" value="<%= book.isbn %> " />
+        <button class="book_select_btn">Select this Book</button>
+    </form>
+  <% } else if (type === 'savedBookResult'){ %> 
+    <a class="book_view_detail_btn" href="/books/<%= book.id %> ">View Details</a>
+  <% } else if(type = 'bookDetails'){ %>
+    <p class="book_description details"><%= book.description %> </p>
+    <p class="book_isbn"><%= book.isbn %> </p>
+    <p class="book_book_shelf">BookShelf: <%= book.book_shelf %> </p>
+    
+    <div class="book_actions_container">
+        <form method="post" id="update_book_form" class="update_book_form">
+            <button type="submit" class="book_select_btn">Update Details</button>
+        </form>
+        <form method="delete" id="delete_book_form" class="delete_book_form">
+            <button type="submit" class="book_select_btn">Delete Book</button>
+        </form>
+    </div>
+  <% } %> 
+</div>

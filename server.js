@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require( 'path' );
 const superagent = require('superagent');
 const { Client } = require('pg');
 const { Book } = require('./store');
@@ -17,6 +18,7 @@ const client = new Client({
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
+app.set( 'views', path.join( __dirname, '/views' ) );
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: false }));
@@ -43,12 +45,10 @@ app.use(errorPage);
 
 // Home page routes
 function handleHomePage(req, res, next) {
-  let sqlQuery = 'SELECT * FROM books';
-  client
-    .query(sqlQuery)
+
+  getAllBooks()
     .then((data) => {
-      let books = data.rows;
-      let totalCount = data.rowCount;
+      let [books, totalCount] = data;
       res.render('pages/index', { books: books, totalCount: totalCount });
     })
     .catch((e) => next(e));
@@ -68,13 +68,9 @@ function handleSearchNew(req, res, next) {
 function handlePostSearch(req, res, next) {
   let keyword = req.body.keyword;
   let search_by = req.body.search_by;
-  let url = `https://www.googleapis.com/books/v1/volumes?q=+${search_by}:${keyword}`;
-  superagent
-    .get(url)
-    .then((response) => {
-      let result = response.body.items.slice(0, 10);
-      let formattedResutl = result.map((bookData) => new Book(bookData));
-      res.render('pages/searches/show', { books: formattedResutl });
+  getBooksFromApi(keyword, search_by)
+    .then((books) => {
+      res.render('pages/searches/show', { books: books });
     })
     .catch((e) => next(e));
 }
@@ -83,12 +79,9 @@ function handlePostSearch(req, res, next) {
 function handleSaveBook(req, res, next) {
     let bookData = req.body;
 
-    let sqlQuery = 'INSERT INTO books (auther, title, isbn, book_shelf, image_url, description) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
-    let safeValues = [bookData.auther, bookData.title, bookData.isbn, bookData.book_shelf, bookData.image_url, bookData.description];
-
-    client.query(sqlQuery, safeValues)
-        .then(data => {
-            res.redirect(`/books/${data.rows[0].id}`);
+    saveBook(bookData)
+        .then(id => {
+            res.redirect(`/books/${id}`);
         })
         .catch(e => next(e));
   }
@@ -97,10 +90,9 @@ function handleSaveBook(req, res, next) {
 function handleBookDetail(req, res, next) {
     let id = req.params.id;
     
-    let sqlQuery = 'SELECT * FROM books WHERE id=$1';
-    client.query(sqlQuery, [id])
-        .then(data => {
-            res.render('pages/books/detail', {book: data.rows[0]});
+    getBookDetail(id)
+        .then(book => {
+            res.render('pages/books/detail', {book: book});
         })
         .then(e => next(e));
 }
@@ -115,6 +107,66 @@ function handlePageNotFound(req, res, next) {
 function errorPage(err, req, res, next) {
   console.error(err.stack);
   res.render('pages/error');
+}
+
+/* SQL queries callback functions */
+
+// function to get all books from database
+function getAllBooks() {
+    let sqlQuery = 'SELECT * FROM books';
+
+    let result = client
+        .query(sqlQuery)
+        .then((data) => {
+        let books = data.rows;
+        let totalCount = data.rowCount;
+        return [books, totalCount];
+        })
+        .catch((e) => {throw new Error(e)});
+    
+        return result;
+}
+
+// function to save book to datbase
+function saveBook(bookData) {
+    let sqlQuery = 'INSERT INTO books (auther, title, isbn, book_shelf, image_url, description) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
+    let safeValues = [bookData.auther, bookData.title, bookData.isbn, bookData.book_shelf, bookData.image_url, bookData.description];
+
+    let id = client.query(sqlQuery, safeValues)
+        .then(data => {
+            return data.rows[0].id;
+        })
+        .catch(e => {throw new Error(e)});
+    
+    return id;
+}
+
+// function to get book details from database
+function getBookDetail(id) {
+    
+    let sqlQuery = 'SELECT * FROM books WHERE id=$1';
+    let book = client.query(sqlQuery, [id])
+        .then(data => {
+            return data.rows[0];
+        })
+        .catch(e => {throw new Error(e)});
+
+    return book;
+}
+
+// function to search books from API
+function getBooksFromApi(keyword, search_by) {
+  let url = `https://www.googleapis.com/books/v1/volumes?q=+${search_by}:${keyword}`;
+  let result =  superagent
+    .get(url)
+    .then((response) => {
+      let result = response.body.items.slice(0, 10);
+      let books = result.map((bookData) => new Book(bookData));
+      return books;
+    })
+    .catch((e) => {throw new Error(e)});
+
+    return result;
 }
 
 /* --------- Application start the server --------- */

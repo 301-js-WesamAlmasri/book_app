@@ -144,3 +144,15 @@ Finish time: 02:05
 Actual time needed to complete: 10 min
 
 ---
+
+Number and name of feature: #10 Design in consistent way
+
+Estimate of time needed to complete: 20 min
+
+Start time: 02:10
+
+Finish time: 02:40
+
+Actual time needed to complete: 30 min
+
+---
