@@ -1,0 +1,9 @@
+@import 'bookCard.css';
+@import 'forms.css';
+
+
+.total_saved_books {
+    margin-top: 50px;
+    color: white;
+    font-size: 1.2rem;
+}

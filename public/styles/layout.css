@@ -41,10 +41,21 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0.2rem;
     width: 100%;
     padding: 15px 0;
-    background-color: rgb(133, 127, 127);
+    background-color: rgb(116, 112, 112);
+}
+
+.hamburgerMenu .line {
+    width: 50px;
+    height: 7px;
+    margin-top: 3px;
+    background-color: white;
+    cursor: pointer;
+}
+
+nav.none {
+    display: none;
 }
 
 main {
