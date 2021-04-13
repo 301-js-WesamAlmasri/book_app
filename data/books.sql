@@ -6,7 +6,7 @@ title VARCHAR(200),
 isbn VARCHAR(200),
 book_shelf VARCHAR(200),
 image_url VARCHAR(200),
-description VARCHAR(255)
+description TEXT
 );
 
 INSERT INTO books

@@ -115,21 +115,40 @@ nav.none {
     background-color: rgb(226, 224, 224);
     padding: 15px 10px;
     border-radius: 5px;
+    line-height: 1.5;
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+
+.bookCard .book_view_detail_btn {
+    width: 50%;
 }
 
 .bookCard a {
     width: 80%;
-    height: 50px;
+    padding: 15px 20px;
     font-size: 1.2rem;
     color: white;
     background-color: black;
-    text-align: center;
-    line-height: 50px;
     margin-top: 40px;
+    border: none;
+    cursor: pointer;
 }
 
-.bookCard .book_view_detail_btn {
-    width: 50%;
+
+.add_new_book_form {
+    width: 80%;
+}
+
+.add_new_book_form button {
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: black;
+    margin-top: 40px;
+    border: none;
+    cursor: pointer;
 }
 
 .total_saved_books {
@@ -166,4 +185,5 @@ nav.none {
     border: none;
     border-radius: 5px;
     font-size: 1rem;
+    cursor: pointer;
 }

@@ -29,6 +29,8 @@ app.get('/', handleHomePage);
 app.get('/searches/new', handleSearchNew);
 app.post('/searches', handlePostSearch);
 
+app.post('/books', handleSaveBook);
+
 app.get('/books/:id', handleBookDetail);
 
 // Page Not Found
@@ -76,6 +78,20 @@ function handlePostSearch(req, res, next) {
     })
     .catch((e) => next(e));
 }
+
+//function to save book to databes
+function handleSaveBook(req, res, next) {
+    let bookData = req.body;
+
+    let sqlQuery = 'INSERT INTO books (auther, title, isbn, book_shelf, image_url, description) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
+    let safeValues = [bookData.auther, bookData.title, bookData.isbn, bookData.book_shelf, bookData.image_url, bookData.description];
+
+    client.query(sqlQuery, safeValues)
+        .then(data => {
+            res.redirect(`/books/${data.rows[0].id}`);
+        })
+        .catch(e => next(e));
+  }
 
 // function to render book details
 function handleBookDetail(req, res, next) {

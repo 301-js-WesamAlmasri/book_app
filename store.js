@@ -4,7 +4,7 @@ function Book(data) {
     this.auther = data.volumeInfo.authors ? data.volumeInfo.authors.join(', ') : 'Anonymous';
     this.description = data.volumeInfo.description ? data.volumeInfo.description : 'N/A';
     this.image_url = data.volumeInfo.imageLinks ? getSecureUrl(data.volumeInfo.imageLinks.thumbnail) : 'https://i.imgur.com/J5LVHEL.jpg';
-    this.isbn = data.industryIdentifiers ? Object.entries(data.industryIdentifiers[0]).join(' ') : 'N/A';
+    this.isbn = data.industryIdentifiers ? Object.entries(data.industryIdentifiers[0]).join(': ') : 'N/A';
 }
 
 // function to get secure protocol url

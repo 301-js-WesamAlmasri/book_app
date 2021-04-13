@@ -132,3 +132,15 @@ Finish time: 01:05
 Actual time needed to complete: 30 min
 
 ---
+
+Number and name of feature: #9 add new books
+
+Estimate of time needed to complete: 30 min
+
+Start time: 01:55
+
+Finish time: 02:05
+
+Actual time needed to complete: 10 min
+
+---

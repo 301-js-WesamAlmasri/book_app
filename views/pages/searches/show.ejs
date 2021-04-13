@@ -32,7 +32,15 @@
         <p class="book_auther"><%= book.auther %></p>
         <p class="book_description"><%= book.description.slice(0, 100) %> ...</p>
 
-        <a class="book_select_btn" href="#">Select this Book</a>
+        <form class="add_new_book_form" action="/books" method="post">
+          <input type="hidden" name="book_shelf" value="<%= book.book_shelf %> ">
+          <input type="hidden" name="title" value="<%= book.title %> ">
+          <input type="hidden" name="auther" value="<%= book.auther %> ">
+          <input type="hidden" name="description" value="<%= book.description %> ">
+          <input type="hidden" name="image_url" value="<%= book.image_url %> ">
+          <input type="hidden" name="isbn" value="<%= book.isbn %> ">
+          <button class="book_select_btn" >Select this Book</button>
+        </form>
       </div>
       <% }) %>
     </main>
