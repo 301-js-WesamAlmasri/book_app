@@ -25,11 +25,20 @@
       </nav>
     </header>
     <main>
-      <h1>Home Page</h1>
+      <h1 class="total_saved_books">Total saved books: <%= totalCount %> </h1>
+      <% books.forEach(book => { %>
+        <div class="bookCard">
+          <img src="<%= book.image %> " alt="" />
+          <h2 class="book_title"><%= book.title %></h2>
+          <p class="book_auther"><%= book.auther %></p>
+  
+          <a class="book_view_detail_btn" href="#">View Details</a>
+        </div>
+        <% }) %>
     </main>
 
     <footer></footer>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="/js/app.js"></script>
   </body>
 </html>

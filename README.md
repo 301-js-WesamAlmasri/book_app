@@ -33,12 +33,7 @@ A Full-stack application for a book list which includes the ability to search th
 
 ## Change Log
 
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
-
-## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+12-04-2022 06:00pm - Application now has a fully-functional express server, with GET route to show a form to search for books and POST route for getting the book resources from the API.
 
 ---
 
@@ -111,5 +106,17 @@ Start time: 11:05
 Finish time: 11:09
 
 Actual time needed to complete: 4 min
+
+---
+
+Number and name of feature: #7 Viewing saved books
+
+Estimate of time needed to complete: 20 min
+
+Start time: 11:05
+
+Finish time: 
+
+Actual time needed to complete: 
 
 ---

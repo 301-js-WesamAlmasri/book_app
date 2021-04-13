@@ -3,9 +3,17 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const superagent = require('superagent');
+const { Client } = require( 'pg' );
 const {Book} = require('./store')
 
 /* ---------- Application Setups ---------- */
+
+//init pg clinet
+const client = new Client( {
+    connectionString: process.env.DATABASE_URL,
+    ssl: process.env.DEV_MODE ? false : { rejectUnauthorized: false }
+  } );
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
@@ -33,12 +41,19 @@ app.use(errorPage);
 
 // Home page routes
 function handleHomePage(req, res, next) {
-    res.render('pages/index', {'name': 'Wesam Al-Masri'})
+    let sqlQuery = 'SELECT * FROM books';
+    client.query(sqlQuery)
+        .then(data => {
+            let books = data.rows;
+            let totalCount = data.rowCount;
+            res.render('pages/index', {books: books, totalCount: totalCount});
+        })
+        .catch(e => next(e));
 }
 
 // Test routes
 function handleTest(req, res, next) {
-    res.render('pages/index')
+    res.render('pages/index');
 }
 
 //routes to render the search form
@@ -74,7 +89,11 @@ function errorPage(err, req, res, next) {
 
 /* --------- Application start the server --------- */
 
-app.listen(PORT, () => {
-    console.log(`Listening on PORT ${PORT}`);
-})
+client.connect()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Listening on PORT ${PORT}`);
+        });
+    })
+    .catch(e => console.log(e));
 
