@@ -1,6 +1,6 @@
 body {
     width: 100%;
-    min-width: 300px;
+    min-width: 410px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,6 +31,7 @@ nav {
     justify-content: center;
     align-items: center;
     position: relative;
+    border-top: 1px solid #027b9c;
 }
 
 nav ul {
@@ -43,7 +44,7 @@ nav ul {
 nav ul li {
     width: 100%;
     padding: 15px 0;
-    background-color: rgb(116, 112, 112);
+    background-color: #00B5E5;
 }
 
 .hamburgerMenu .line {
@@ -64,6 +65,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .error_container {
@@ -88,4 +90,10 @@ main {
 
 footer {
     width: 100%;
+}
+
+@media screen and (min-width: 650px) {
+    main {
+        flex-direction: row;
+    }
 }
