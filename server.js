@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const methodOverride = require('method-override');
 const path = require( 'path' );
 const superagent = require('superagent');
 const { Client } = require('pg');
@@ -18,6 +19,7 @@ const client = new Client({
 const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
+app.use(methodOverride('_method'));
 app.set( 'views', path.join( __dirname, '/views' ) );
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
@@ -34,6 +36,7 @@ app.post('/searches', handlePostSearch);
 app.post('/books', handleSaveBook);
 
 app.get('/books/:id', handleBookDetail);
+app.put('/books/:id', handleUpdateBook);
 
 // Page Not Found
 app.get('*', handlePageNotFound);
@@ -97,6 +100,16 @@ function handleBookDetail(req, res, next) {
         .catch(e => next(e));
 }
 
+// function to render book details
+function handleUpdateBook(req, res, next) {
+  let id = req.params.id;
+  let data = req.body;
+
+  updateBookDetail(id, data)
+      .then(() => res.redirect(`/books/${id}`))
+      .catch(e => next(e));
+}
+
 function handlePageNotFound(req, res, next) {
   res.render('pages/error', { context: 'Page Not Found' });
 }
@@ -153,6 +166,36 @@ function getBookDetail(id) {
 
     return book;
 }
+
+// function to update book details from database
+function updateBookDetail(id, data) {
+  let { auther, title, isbn, book_shelf, image_url, description } = data;
+  let sqlQuery = 'UPDATE books SET auther=$1, title=$2, isbn=$3, book_shelf=$4, image_url=$5, description=$6 WHERE id=$7';
+  let values = [auther, title, isbn, book_shelf, image_url, description, id];
+
+  let book = client.query(sqlQuery, values)
+      .then(data => {
+          return data.rows[0];
+      })
+      .catch(e => {throw new Error(e)});
+
+  return book;
+}
+
+// function to dekete book from database
+function delteBookDetail(id) {
+let sqlQuery = 'DELETE FROM books WHERE id=$1';
+
+let book = client.query(sqlQuery, [id])
+    .then(data => {
+        return data.rows[0];
+    })
+    .catch(e => {throw new Error(e)});
+
+return book;
+}
+
+/* superagent calls functions */
 
 // function to search books from API
 function getBooksFromApi(keyword, search_by) {

@@ -16,7 +16,7 @@ A Full-stack application for a book list which includes the ability to search th
 ## Architecture
 
 - Lnaguage: JavaScript with Node.js, postgreSQL
-- Frameworks and libraries used: `express`, `cors`, `ejs`,  `dotenv`, `pg`, `superagent`,
+- Frameworks and libraries used: `express`, `cors`, `ejs`,  `dotenv`, `pg`, `superagent`, `method-override`
 - APIs: Google Books API
 
 ![javascrip](https://camo.githubusercontent.com/70af7d849226bbfced08e4510d3b0dc5cc6a38b3415abee253ec233286e5f66f/68747470733a2f2f6c68342e676f6f676c6575736572636f6e74656e742e636f6d2f686b614e467778315039314636425173762d4f56642d432d68344743784c4f67675a3969724f4545576e6a4d69667a53376a717a77666a3650775554614a367955635a304f75655275695a515252587771515775486369775a5a6d686c30634179486766494f792d544146336d33766f623135497142535f765a5955546c615f313337594e657276733341)
@@ -34,6 +34,10 @@ A Full-stack application for a book list which includes the ability to search th
 ## Change Log
 
 12-04-2022 06:00pm - Application now has a fully-functional express server, with GET route to show a form to search for books and POST route for getting the book resources from the API.
+
+13-04-2022 06:00pm - Application now has the functionality to save books to database and list them in the home page.
+
+14-04-2022 06:00pm - Application now has the functionality to update and delete books from database.
 
 ---
 
@@ -166,5 +170,17 @@ Start time: 03:35
 Finish time: 03:50
 
 Actual time needed to complete: 15 min
+
+---
+
+Number and name of feature: #12 Update Books
+
+Estimate of time needed to complete: 20 min
+
+Start time: 02:00
+
+Finish time: 02:30
+
+Actual time needed to complete: 30 min
 
 ---
