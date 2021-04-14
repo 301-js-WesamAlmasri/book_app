@@ -184,3 +184,16 @@ Finish time: 02:30
 Actual time needed to complete: 30 min
 
 ---
+
+
+Number and name of feature: #12 Delete Books
+
+Estimate of time needed to complete: 5 min
+
+Start time: 03:45
+
+Finish time: 03:50
+
+Actual time needed to complete: 5 min
+
+---

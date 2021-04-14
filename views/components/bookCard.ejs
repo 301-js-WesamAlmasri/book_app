@@ -23,7 +23,7 @@
     
     <div class="book_actions_container">
         <button id="update_btn" class="book_select_btn">Update Details</button>
-        <form method="delete" id="delete_book_form" class="delete_book_form">
+        <form action="/books/<%= book.id %>?_method=delete" method="post" id="delete_book_form" class="delete_book_form">
             <button type="submit" class="book_delete_btn">Delete Book</button>
         </form>
     </div>

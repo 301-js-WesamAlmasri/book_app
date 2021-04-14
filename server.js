@@ -37,6 +37,7 @@ app.post('/books', handleSaveBook);
 
 app.get('/books/:id', handleBookDetail);
 app.put('/books/:id', handleUpdateBook);
+app.delete('/books/:id', handleDeleteBook);
 
 // Page Not Found
 app.get('*', handlePageNotFound);
@@ -100,7 +101,7 @@ function handleBookDetail(req, res, next) {
         .catch(e => next(e));
 }
 
-// function to render book details
+// function to handle update book details
 function handleUpdateBook(req, res, next) {
   let id = req.params.id;
   let data = req.body;
@@ -110,6 +111,16 @@ function handleUpdateBook(req, res, next) {
       .catch(e => next(e));
 }
 
+// function to handle delete book details
+function handleDeleteBook(req, res, next) {
+  let id = req.params.id;
+
+  delteBookDetail(id)
+      .then(() => res.redirect(`/`))
+      .catch(e => next(e));
+}
+
+// function to render not found page
 function handlePageNotFound(req, res, next) {
   res.render('pages/error', { context: 'Page Not Found' });
 }
