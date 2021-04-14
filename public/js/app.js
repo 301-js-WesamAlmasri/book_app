@@ -12,3 +12,10 @@ $('.hamburgerMenu').on('click', function (e) {
         }, () => $('nav').toggleClass('none'));
     } 
 })
+
+$('#update_btn').on('click', function (event) {
+    $('#edit_book_form_container').toggle();
+    $('html, body').animate({
+        scrollTop: $('#edit_book_form_container').offset().top
+      }, 1000);
+})

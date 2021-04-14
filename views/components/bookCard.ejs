@@ -18,16 +18,46 @@
     <a class="book_view_detail_btn" href="/books/<%= book.id %> ">View Details</a>
   <% } else if(type = 'bookDetails'){ %>
     <p class="book_description details"><%= book.description %> </p>
-    <p class="book_isbn"><%= book.isbn %> </p>
+    <p class="book_isbn">ISBN: <%= book.isbn %> </p>
     <p class="book_book_shelf">BookShelf: <%= book.book_shelf %> </p>
     
     <div class="book_actions_container">
-        <form method="post" id="update_book_form" class="update_book_form">
-            <button type="submit" class="book_select_btn">Update Details</button>
-        </form>
-        <form method="delete" id="delete_book_form" class="delete_book_form">
+        <button id="update_btn" class="book_select_btn">Update Details</button>
+        <form action="/books/<%= book.id %>?_method=delete" method="post" id="delete_book_form" class="delete_book_form">
             <button type="submit" class="book_delete_btn">Delete Book</button>
         </form>
+    </div>
+
+    <div id="edit_book_form_container" class="form_container">
+      <form id="edit_book_form" class="edit_book_form" action="/books/<%= book.id %>?_method=put" method="post">
+          <div class="input_container">
+            <label for="book_shelf">Book Shelf</label>
+            <input id="book_shelf" type="text" name="book_shelf" value="<%= book.book_shelf %> " />
+          </div>
+          <div class="input_container">
+            <label for="title">Title</label>
+            <input id="title" type="text" name="title" value="<%= book.title %> " />
+          </div>
+          <div class="input_container">
+            <label for="auther">Auther</label>
+            <input id="auther" type="text" name="auther" value="<%= book.auther %> " />
+          </div>
+          <div class="input_container">
+            <label for="image_url">Image URL</label>
+            <input id="image_url" type="text" name="image_url" value="<%= book.image_url %> " />
+          </div>
+          <div class="input_container">
+            <label for="isbn">ISBN</label>
+            <input id="isbn" type="text" name="isbn" value="<%= book.isbn %> " />
+          </div>
+          <div class="input_container textarea">
+            <label for="description">Description</label>
+            <textarea id="description" type="text" cols="30" rows="10" name="description"><%= book.description %></textarea>
+          </div>
+          <div class="input_container">
+            <button type="submit" class="book_save_btn">Save</button>
+          </div>
+      </form>
     </div>
   <% } %> 
 </div>
